@@ -5,7 +5,7 @@ import { getUser } from "../../../controllers/v1/users/get";
 import { listUsers } from "../../../controllers/v1/users/list";
 import { updateUser } from "../../../controllers/v1/users/update";
 import { ZUserWrite } from "../../../db/models/User";
-import { handleBody } from "../../../middlewares/serializer";
+import { handleBody } from "../../../middlewares/validation.ts";
 
 const usersRouter = Router();
 

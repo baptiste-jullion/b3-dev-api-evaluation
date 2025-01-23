@@ -5,7 +5,7 @@ import { getTag } from "../../../controllers/v1/tags/get";
 import { listTags } from "../../../controllers/v1/tags/list";
 import { updateTag } from "../../../controllers/v1/tags/update";
 import { ZTagWrite } from "../../../db/models/Tag";
-import { handleBody } from "../../../middlewares/serializer";
+import { handleBody } from "../../../middlewares/validation.ts";
 
 const tagsRouter = Router();
 

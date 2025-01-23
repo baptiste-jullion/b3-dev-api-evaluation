@@ -5,7 +5,7 @@ import { getProduct } from "../../../controllers/v1/products/get";
 import { listProducts } from "../../../controllers/v1/products/list";
 import { updateProduct } from "../../../controllers/v1/products/update";
 import { ZProductWrite } from "../../../db/models/Product";
-import { handleBody } from "../../../middlewares/serializer";
+import { handleBody } from "../../../middlewares/validation.ts";
 
 const productsRouter = Router();
 
