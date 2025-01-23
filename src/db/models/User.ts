@@ -1,11 +1,19 @@
 import { DataTypes } from "sequelize";
 import { sequelizeInstance } from "../index.ts";
 
-const Test = sequelizeInstance.define("Test", {
-	name: {
+const User = sequelizeInstance.define("User", {
+	role: {
+		type: DataTypes.ENUM("visitor", "customer", "admin"),
+		allowNull: false,
+	},
+	email: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	password: {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
 });
 
-export { Test };
+export { User };
