@@ -1,6 +1,22 @@
 import type { Request, Response } from "express";
 import type { ParamsDictionary } from "express-serve-static-core";
 
+const extractPaginationInfosFromRequest = (req: Request) => {
+	const page = Number.parseInt(req.query.page as string) || 1;
+	const limit = Number.parseInt(req.query.limit as string) || 10;
+
+	if (limit < 0 || limit > 100 || page < 1)
+		throw new APIError(
+			400,
+			"Invalid pagination parameters. Allowed values are limit between 1 and 100 and page >= 1",
+		);
+
+	return {
+		page,
+		limit,
+	};
+};
+
 interface TypedRequest<
 	Body = never,
 	Params extends ParamsDictionary = ParamsDictionary,
@@ -13,7 +29,7 @@ interface AuthenticatedRequest<
 	Body = never,
 	Params extends ParamsDictionary = ParamsDictionary,
 > extends TypedRequest<Body, Params> {
-	user: string;
+	user: number;
 }
 
 interface MayBeAuthenticatedRequest<
@@ -21,7 +37,7 @@ interface MayBeAuthenticatedRequest<
 	Body = never | any,
 	Params extends ParamsDictionary = ParamsDictionary,
 > extends TypedRequest<Body, Params> {
-	user?: string;
+	user?: number;
 }
 
 interface SequelizeDefaultAttributes {
@@ -66,6 +82,7 @@ class APIError {
 }
 
 export {
+	extractPaginationInfosFromRequest,
 	type TypedRequest,
 	type AuthenticatedRequest,
 	type MayBeAuthenticatedRequest,
