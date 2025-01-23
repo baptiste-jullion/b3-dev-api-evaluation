@@ -18,9 +18,9 @@ const auth = async (
 
 		const [_, token] = authorization.split(" ");
 
-		req.user = (verify(token, JWT_SECRET) as JwtPayload).email;
+		req.user = (verify(token, JWT_SECRET) as JwtPayload).id;
 
-		const user = await User.findOne({ where: { email: req.user } });
+		const user = await User.findByPk(req.user);
 
 		if (!user) throw new APIError(401);
 
