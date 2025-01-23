@@ -1,4 +1,6 @@
 import { DataTypes } from "sequelize";
+import { z } from "zod";
+import type { SequelizeDefaultAttributes } from "../../utils.ts";
 import { sequelizeInstance } from "../index.ts";
 
 const Tag = sequelizeInstance.define("Tag", {
@@ -8,4 +10,11 @@ const Tag = sequelizeInstance.define("Tag", {
 	},
 });
 
-export { Tag };
+const ZTagWrite = z.object({
+	title: z.string(),
+});
+
+type TagWrite = z.infer<typeof ZTagWrite>;
+interface TagRead extends TagWrite, SequelizeDefaultAttributes {}
+
+export { Tag, ZTagWrite, type TagWrite, type TagRead };

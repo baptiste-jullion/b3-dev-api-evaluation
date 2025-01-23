@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
-import { sequelizeInstance } from "../index.ts";
+import { z } from "zod";
+import { sequelizeInstance } from "../";
+import type { SequelizeDefaultAttributes } from "../../utils";
 
 const Product = sequelizeInstance.define("Product", {
 	title: {
@@ -20,4 +22,14 @@ const Product = sequelizeInstance.define("Product", {
 	},
 });
 
-export { Product };
+const ZProductWrite = z.object({
+	title: z.string(),
+	price: z.number(),
+	description: z.string(),
+	count: z.number().int(),
+});
+
+type ProductWrite = z.infer<typeof ZProductWrite>;
+interface ProductRead extends ProductWrite, SequelizeDefaultAttributes {}
+
+export { Product, ZProductWrite, type ProductWrite, type ProductRead };
