@@ -2,7 +2,7 @@ import { Router } from "express";
 import { login } from "../../../controllers/v1/auth/login";
 import { register } from "../../../controllers/v1/auth/register";
 import { ZUserWriteLogin } from "../../../db/models/User.ts";
-import { handleBody } from "../../../middlewares/serializer.ts";
+import { handleBody } from "../../../middlewares/validation.ts";
 
 const authRouter = Router();
 
