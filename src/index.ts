@@ -3,7 +3,6 @@ import express from "express";
 import { sequelizeInstance } from "./db";
 import "./db/models";
 
-import { auth } from "./middlewares/auth.ts";
 import { apiRouter } from "./routes";
 
 config();
@@ -11,7 +10,7 @@ config();
 const app = express();
 app.use(express.json());
 
-app.use("/api", auth, apiRouter);
+app.use("/api", apiRouter);
 
 const { API_PORT } = process.env;
 app.listen(API_PORT, () => {
