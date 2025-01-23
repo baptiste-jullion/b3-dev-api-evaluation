@@ -1,29 +1,46 @@
-import type { NextFunction, Request, Response } from "express";
-import { verify } from "jsonwebtoken";
+import type { NextFunction, Response } from "express";
+import { type JwtPayload, verify } from "jsonwebtoken";
+import { User } from "../db/models";
+import { APIError, type MayBeAuthenticatedRequest } from "../utils.ts";
 
 const { JWT_SECRET } = process.env;
 
-const auth = async (req: Request, res: Response, next: NextFunction) => {
-	const { authorization } = req.headers;
-
-	if (!authorization) {
-		return res.status(401).json({
-			message: "Authorization header is required",
-		});
-	}
-
-	const [_, token] = authorization.split(" ");
-
+const auth = async (
+	req: MayBeAuthenticatedRequest,
+	res: Response,
+	next: NextFunction,
+	shouldBeAdmin = false,
+) => {
 	try {
-		req.user = verify(token, JWT_SECRET);
+		const { authorization } = req.headers;
+
+		if (!authorization) throw new APIError(401);
+
+		const [_, token] = authorization.split(" ");
+
+		req.user = (verify(token, JWT_SECRET) as JwtPayload).email;
+
+		const user = await User.findOne({ where: { email: req.user } });
+
+		if (!user) throw new APIError(401);
+
+		if (shouldBeAdmin && user.toJSON().role !== "admin")
+			throw new APIError(403);
+
 		next();
 	} catch (error) {
-		return res.status(401).json({
-			message: "Invalid token",
-		});
+		APIError.handleError(res, error);
 	}
 
 	return;
 };
 
-export { auth };
+const admin = async (
+	req: MayBeAuthenticatedRequest,
+	res: Response,
+	next: NextFunction,
+) => {
+	await auth(req, res, next, true);
+};
+
+export { auth, admin };
