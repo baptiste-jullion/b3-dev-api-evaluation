@@ -3,12 +3,16 @@
 To install dependencies:
 
 ```bash
+npm install
+# or
 bun install
 ```
 
 To run:
 
 ```bash
+node src/index.ts
+# or
 bun run src/index.ts
 ```
 
