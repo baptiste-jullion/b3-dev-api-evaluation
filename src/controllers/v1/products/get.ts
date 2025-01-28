@@ -1,6 +1,6 @@
+import { Product } from "@db/models";
+import { APIError, type TypedRequest } from "@utils";
 import type { Response } from "express";
-import { Product } from "../../../db/models";
-import { APIError, type TypedRequest } from "../../../utils.ts";
 
 const getProduct = async (
 	req: TypedRequest<never, { id: string }>,

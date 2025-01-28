@@ -1,8 +1,8 @@
+import { User, type UserWriteLogin } from "@db/models/User";
+import { APIError, type TypedRequest } from "@utils";
 import { verify } from "argon2";
 import type { Response } from "express";
 import { sign } from "jsonwebtoken";
-import { User, type UserWriteLogin } from "../../../db/models/User";
-import { APIError, type TypedRequest } from "../../../utils.ts";
 
 const login = async (req: TypedRequest<UserWriteLogin>, res: Response) => {
 	try {

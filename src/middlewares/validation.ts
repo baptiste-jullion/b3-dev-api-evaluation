@@ -1,6 +1,6 @@
+import { APIError } from "@utils";
 import type { NextFunction, Request, Response } from "express";
 import type { z } from "zod";
-import { APIError } from "../utils.ts";
 
 const handleBody = <T>(
 	schema: z.ZodType<T>,

@@ -1,11 +1,11 @@
+import { createProduct } from "@c/v1/products/create";
+import { deleteProduct } from "@c/v1/products/delete";
+import { getProduct } from "@c/v1/products/get";
+import { listProducts } from "@c/v1/products/list";
+import { updateProduct } from "@c/v1/products/update";
+import { ZProductWrite } from "@db/models/Product";
+import { handleBody } from "@m/validation";
 import { Router } from "express";
-import { createProduct } from "../../../controllers/v1/products/create";
-import { deleteProduct } from "../../../controllers/v1/products/delete";
-import { getProduct } from "../../../controllers/v1/products/get";
-import { listProducts } from "../../../controllers/v1/products/list";
-import { updateProduct } from "../../../controllers/v1/products/update";
-import { ZProductWrite } from "../../../db/models/Product";
-import { handleBody } from "../../../middlewares/validation.ts";
 
 const productsRouter = Router();
 

@@ -1,7 +1,7 @@
+import { sequelizeInstance } from "@db/index";
 import { config } from "dotenv";
 import express from "express";
-import { sequelizeInstance } from "./db";
-import "./db/models";
+import "@db/models/index";
 
 import { apiRouter } from "./routes";
 

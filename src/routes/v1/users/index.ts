@@ -1,11 +1,11 @@
+import { createUser } from "@c/v1/users/create";
+import { deleteUser } from "@c/v1/users/delete";
+import { getUser } from "@c/v1/users/get";
+import { listUsers } from "@c/v1/users/list";
+import { updateUser } from "@c/v1/users/update";
+import { ZUserWrite } from "@db/models/User";
+import { handleBody } from "@m/validation";
 import { Router } from "express";
-import { createUser } from "../../../controllers/v1/users/create";
-import { deleteUser } from "../../../controllers/v1/users/delete";
-import { getUser } from "../../../controllers/v1/users/get";
-import { listUsers } from "../../../controllers/v1/users/list";
-import { updateUser } from "../../../controllers/v1/users/update";
-import { ZUserWrite } from "../../../db/models/User";
-import { handleBody } from "../../../middlewares/validation.ts";
 
 const usersRouter = Router();
 

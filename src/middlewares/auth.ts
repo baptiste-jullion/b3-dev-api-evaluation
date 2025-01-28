@@ -1,7 +1,7 @@
+import { User } from "@db/models";
+import { APIError, type MayBeAuthenticatedRequest } from "@utils";
 import type { NextFunction, Response } from "express";
 import { type JwtPayload, verify } from "jsonwebtoken";
-import { User } from "../db/models";
-import { APIError, type MayBeAuthenticatedRequest } from "../utils.ts";
 
 const { JWT_SECRET } = process.env;
 
