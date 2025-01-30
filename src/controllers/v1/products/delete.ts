@@ -1,5 +1,5 @@
 import type { Response } from "express";
-import { Product, type ProductWrite } from "#db/models/Product";
+import { Product } from "#db/models/Product";
 import { APIError, type TypedRequest } from "#utils";
 
 const deleteProduct = async (

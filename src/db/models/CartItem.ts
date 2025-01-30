@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import { z } from "zod";
 import { sequelizeInstance } from "#db/index";
-import type { SequelizeDefaultAttributes } from "#utils";
 
 const CartItem = sequelizeInstance.define("CartItem", {
 	quantity: {
