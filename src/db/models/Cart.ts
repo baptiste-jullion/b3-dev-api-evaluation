@@ -1,4 +1,4 @@
-import { sequelizeInstance } from "@db/index";
+import { sequelizeInstance } from "#db/index";
 
 const Cart = sequelizeInstance.define("Cart", {});
 

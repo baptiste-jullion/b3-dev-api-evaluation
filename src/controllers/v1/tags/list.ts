@@ -1,6 +1,6 @@
-import { Tag } from "@db/models";
-import { APIError, type TypedRequest } from "@utils";
 import type { Response } from "express";
+import { Tag } from "#db/models";
+import { APIError, type TypedRequest } from "#utils";
 
 const listTags = async (req: TypedRequest<never>, res: Response) => {
 	try {

@@ -1,10 +1,9 @@
 {
 	"compilerOptions": {
-		"lib": ["ESNext", "DOM"],
+		"lib": ["ESNext"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "force",
-		"jsx": "react-jsx",
 		"allowJs": true,
 
 		"moduleResolution": "bundler",
@@ -22,12 +21,12 @@
 		"baseUrl": "./src",
 		"outDir": "./dist",
 		"paths": {
-			"@c/*": ["controllers/*"],
-			"@db/*": ["db/*"],
-			"@r/*": ["routes/*"],
-			"@m/*": ["middlewares/*"],
-			"@utils": ["utils.ts"],
-			"@types": ["types.ts"]
+			"#c/*": ["controllers/*"],
+			"#db/*": ["db/*"],
+			"#r/*": ["routes/*"],
+			"#m/*": ["middlewares/*"],
+			"#utils": ["utils.ts"],
+			"#types": ["types.ts"]
 		}
 	},
 	"include": ["src/**/*"],

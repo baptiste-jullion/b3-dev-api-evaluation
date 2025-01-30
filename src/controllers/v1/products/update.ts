@@ -1,6 +1,6 @@
-import { Product, type ProductWrite } from "@db/models/Product";
-import { APIError, type TypedRequest } from "@utils";
 import type { Response } from "express";
+import { Product, type ProductWrite } from "#db/models/Product";
+import { APIError, type TypedRequest } from "#utils";
 
 const updateProduct = async (
 	req: TypedRequest<ProductWrite, { id: string }>,

@@ -1,6 +1,6 @@
-import { Tag, type TagWrite } from "@db/models/Tag";
-import { APIError, type TypedRequest } from "@utils";
 import type { Response } from "express";
+import { Tag, type TagWrite } from "#db/models/Tag";
+import { APIError, type TypedRequest } from "#utils";
 
 const createTag = async (req: TypedRequest<TagWrite>, res: Response) => {
 	try {

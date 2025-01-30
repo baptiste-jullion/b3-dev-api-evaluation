@@ -1,8 +1,8 @@
-import { login } from "@c/v1/auth/login";
-import { register } from "@c/v1/auth/register";
-import { ZUserWriteLogin } from "@db/models/User";
-import { handleBody } from "@m/validation";
 import { Router } from "express";
+import { login } from "#c/v1/auth/login";
+import { register } from "#c/v1/auth/register";
+import { ZUserWriteLogin } from "#db/models/User";
+import { handleBody } from "#m/validation";
 
 const authRouter = Router();
 

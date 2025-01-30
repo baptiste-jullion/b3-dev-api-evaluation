@@ -1,6 +1,6 @@
-import { User } from "@db/models/User";
-import { APIError, type TypedRequest } from "@utils";
 import type { Response } from "express";
+import { User } from "#db/models/User";
+import { APIError, type TypedRequest } from "#utils";
 
 const getUser = async (
 	req: TypedRequest<never, { id: string }>,

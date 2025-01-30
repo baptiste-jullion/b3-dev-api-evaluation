@@ -1,7 +1,7 @@
-import { User, type UserWrite } from "@db/models/User";
-import { APIError, type TypedRequest } from "@utils";
 import { hash } from "argon2";
 import type { Response } from "express";
+import { User, type UserWrite } from "#db/models/User";
+import { APIError, type TypedRequest } from "#utils";
 
 const updateUser = async (
 	req: TypedRequest<UserWrite, { id: string }>,

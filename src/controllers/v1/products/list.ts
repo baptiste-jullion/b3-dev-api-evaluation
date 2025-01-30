@@ -1,11 +1,11 @@
-import { Product, Tag } from "@db/models";
+import type { Response } from "express";
+import { Op } from "sequelize";
+import { Product, Tag } from "#db/models";
 import {
 	APIError,
 	type TypedRequest,
 	extractPaginationInfosFromRequest,
-} from "@utils";
-import type { Response } from "express";
-import { Op } from "sequelize";
+} from "#utils";
 
 const listProducts = async (req: TypedRequest, res: Response) => {
 	try {
