@@ -1,6 +1,6 @@
 import type { Response } from "express";
-import { User, type UserWrite } from "../../../db/models/User.ts";
-import { APIError, type TypedRequest } from "../../../utils.ts";
+import { User } from "#db/models/User";
+import { APIError, type TypedRequest } from "#utils";
 
 const deleteUser = async (
 	req: TypedRequest<never, { id: string }>,

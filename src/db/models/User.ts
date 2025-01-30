@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { z } from "zod";
-import type { SequelizeDefaultAttributes } from "../../utils.ts";
-import { sequelizeInstance } from "../index.ts";
+import { sequelizeInstance } from "#db/index";
+import type { SequelizeDefaultAttributes } from "#utils";
 
 const User = sequelizeInstance.define("User", {
 	role: {

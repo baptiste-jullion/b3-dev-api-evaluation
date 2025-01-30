@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelizeInstance } from "../index.ts";
+import { sequelizeInstance } from "#db/index";
 
 const Command = sequelizeInstance.define("Command", {
 	address: {

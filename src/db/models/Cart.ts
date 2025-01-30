@@ -1,4 +1,4 @@
-import { sequelizeInstance } from "../index.ts";
+import { sequelizeInstance } from "#db/index";
 
 const Cart = sequelizeInstance.define("Cart", {});
 

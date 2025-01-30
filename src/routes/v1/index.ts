@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { admin } from "../../middlewares/auth";
+import { admin } from "#m/auth";
 import { authRouter } from "./auth";
 import { productsRouter } from "./products";
 import { tagsRouter } from "./tags";

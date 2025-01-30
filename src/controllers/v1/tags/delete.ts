@@ -1,6 +1,6 @@
 import type { Response } from "express";
-import { Tag } from "../../../db/models";
-import { APIError, type TypedRequest } from "../../../utils.ts";
+import { Tag } from "#db/models";
+import { APIError, type TypedRequest } from "#utils";
 
 const deleteTag = async (
 	req: TypedRequest<never, { id: string }>,

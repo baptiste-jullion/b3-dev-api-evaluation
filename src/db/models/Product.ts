@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { z } from "zod";
-import { sequelizeInstance } from "../";
-import type { SequelizeDefaultAttributes } from "../../utils";
+import { sequelizeInstance } from "#db/index";
+import type { SequelizeDefaultAttributes } from "#utils";
 
 const Product = sequelizeInstance.define("Product", {
 	title: {
