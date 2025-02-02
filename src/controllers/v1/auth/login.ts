@@ -15,8 +15,10 @@ const login = async (req: TypedRequest<UserWriteLogin>, res: Response) => {
 		if (!(await verify(user.toJSON().password, password)))
 			throw new APIError(401, "Invalid email or password");
 
+		const platform = req.headers["user-agent"];
+
 		const token = sign({ id: user.toJSON().id }, process.env.JWT_SECRET, {
-			expiresIn: "1h",
+			expiresIn: platform === "borne" ? "1h" : "30d",
 		});
 
 		res.json({ token });
