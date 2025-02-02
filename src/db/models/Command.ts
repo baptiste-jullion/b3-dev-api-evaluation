@@ -6,6 +6,10 @@ const Command = sequelizeInstance.define("Command", {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
+	total: {
+		type: DataTypes.FLOAT,
+		allowNull: false,
+	},
 });
 
 export { Command };

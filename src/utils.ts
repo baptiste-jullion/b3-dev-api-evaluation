@@ -5,7 +5,7 @@ const extractPaginationInfosFromRequest = (req: Request) => {
 	const page = Number.parseInt(req.query.page as string) || 1;
 	const limit = Number.parseInt(req.query.limit as string) || 10;
 
-	if (limit < 0 || limit > 100 || page < 1)
+	if (limit <= 0 || limit > 100 || page < 1)
 		throw new APIError(
 			400,
 			"Invalid pagination parameters. Allowed values are limit between 1 and 100 and page >= 1",

@@ -8,7 +8,7 @@ import { User } from "./User";
 Product.belongsToMany(Tag, { through: "ProductTag" });
 Tag.belongsToMany(Product, { through: "ProductTag" });
 
-User.hasMany(Cart);
+User.hasOne(Cart);
 Cart.belongsTo(User);
 
 Product.hasMany(CartItem);
@@ -16,5 +16,8 @@ CartItem.belongsTo(Product);
 
 Cart.hasMany(CartItem);
 CartItem.belongsTo(Cart);
+
+User.hasMany(Command);
+Command.belongsTo(User);
 
 export { User, Product, Tag, Cart, CartItem, Command };
