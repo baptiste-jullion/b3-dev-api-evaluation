@@ -4,23 +4,15 @@ import { getTag } from "@c/v1/tags/get";
 import { listTags } from "@c/v1/tags/list";
 import { updateTag } from "@c/v1/tags/update";
 import { ZTagWrite } from "@db/models/Tag";
-import { handleBody } from "@m/validation";
+import { validateBody } from "@m/validation";
 import { Router } from "express";
 
 const tagsRouter = Router();
 
 tagsRouter.get("/", listTags);
-tagsRouter.post(
-	"/",
-	(req, res, next) => handleBody(ZTagWrite, req, res, next),
-	createTag,
-);
+tagsRouter.post("/", validateBody(ZTagWrite), createTag);
 tagsRouter.get("/:id", getTag);
 tagsRouter.delete("/:id", deleteTag);
-tagsRouter.patch(
-	"/:id",
-	(req, res, next) => handleBody(ZTagWrite.partial(), req, res, next),
-	updateTag,
-);
+tagsRouter.patch("/:id", validateBody(ZTagWrite.partial()), updateTag);
 
 export { tagsRouter };
