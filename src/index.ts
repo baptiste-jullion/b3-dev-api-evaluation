@@ -14,7 +14,7 @@ app.use("/api", apiRouter);
 
 const { API_PORT } = process.env;
 app.listen(API_PORT, () => {
-	console.log(`Server is running @ http://localhost:${API_PORT}`);
+	console.log("API is up");
 });
 
 sequelizeInstance.sync({ alter: true });

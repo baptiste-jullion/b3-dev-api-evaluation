@@ -1,0 +1,47 @@
+services:
+  db:
+    image: mysql
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS:-root}
+      MYSQL_DATABASE: b3-dev-api-evaluation
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASS: ${DB_PASS:-root}
+      DB_NAME: b3-dev-api-evaluation
+      API_PORT: 3000
+      JWT_SECRET: ${JWT_SECRET:-jwt_secret}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - default
+    ports:
+      - "${API_PORT:-4554}:3000"
+
+volumes:
+  db_data:
+
+networks:
+  default:
